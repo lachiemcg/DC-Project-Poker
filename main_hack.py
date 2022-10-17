@@ -66,14 +66,16 @@ def make_the_winner(players_csv_file, first_three_community_cards, winner):
     rcc_np = np.array(remaining_cards_combinations)
 
 
-    #this function is to check and see edge case of other player having same hand as you
+    #this function is to check and see edge case of other players having better score than you
+    #It starts with the best hand combination for winning player and checks against other players
+    #Stops when winning hand is acheived
 
     all_combinations_with_scores_descending = get_winning_player_combinations(players[winner], rcc_np)
     print(f"all_combinations_with_scores_descending: {all_combinations_with_scores_descending}")
 
     best_remaining_cards = []
     for combination in all_combinations_with_scores_descending:
-        print(f"combination: {combination}")
+
         winning_player_score = int(combination[-1])
 
         best_remaining_cards = combination[5:7]
@@ -84,7 +86,6 @@ def make_the_winner(players_csv_file, first_three_community_cards, winner):
             other_player_combination = np.append(player_hand, best_remaining_cards)
             other_player_score = score_my_hand(other_player_combination)
             if other_player_score >= winning_player_score:
-                print(f"player_name: {player_name}; other_player_combination: {other_player_combination}; other_player_score: {other_player_score}")
                 winner_is_winning = False
                 break
         
