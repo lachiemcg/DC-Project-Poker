@@ -1,8 +1,7 @@
 from collections import defaultdict
 
 #create dictoionary in order to rank hands
-card_order_dict = {"2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8,
-                   "9": 9, "T": 10, "J": 11, "Q": 12, "K": 13, "A": 14, "0": 0, "1": 1}
+card_order_dict = {"2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9, "T": 10, "J": 11, "Q": 12, "K": 13, "A": 14, "0": 0, "1": 1}
 
 #main function to score hand by asigning ranking hands 
 #could change x to hand

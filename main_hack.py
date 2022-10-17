@@ -37,14 +37,13 @@ def get_winning_player_combinations(player_1_np, remaining_cards_combinations_np
         (all_combinations, all_scores), axis=1, dtype='O')
 
     # sort descending by last column (7)-hack to do descending not ascending
-    #cheat method from stack overflow
+    # cheat method from stack overflow
     return all_combinations_with_scores[all_combinations_with_scores[:,7].argsort()[::-1]]
 
 #this is main function that was asked for in brief
 def make_the_winner(players_csv_file, first_three_community_cards, winner):
     #import csv file and create deck
     players_df = pd.read_csv(players_csv_file)
-    print(players_df)
     deck = create_deck()
     #remove community cards from deck
     for card in first_three_community_cards:
@@ -71,7 +70,6 @@ def make_the_winner(players_csv_file, first_three_community_cards, winner):
     #Stops when winning hand is acheived
 
     all_combinations_with_scores_descending = get_winning_player_combinations(players[winner], rcc_np)
-    print(f"all_combinations_with_scores_descending: {all_combinations_with_scores_descending}")
 
     best_remaining_cards = []
     for combination in all_combinations_with_scores_descending:
@@ -95,8 +93,8 @@ def make_the_winner(players_csv_file, first_three_community_cards, winner):
     raise Exception('cannot find winning cards-split pot conditions')
 
 
-first_three_community_cards = ['QC', 'AS', '7C']
-winner = 'Lachlan'
+first_three_community_cards = ['QC', 'AS', '9C']
+winner = 'Bridgette'
 best_remaining_cards = make_the_winner('players.csv', first_three_community_cards, winner)
 
 print("best_remaining_cards: ", best_remaining_cards)
